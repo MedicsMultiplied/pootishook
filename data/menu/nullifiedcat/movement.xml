@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tab name="Movement">
+    <TabContainer width="fill" height="fill">
+        <Include path="nullifiedcat/movement/general.xml"/>
+        <Include path="nullifiedcat/movement/navbot.xml"/>
+        <Include path="nullifiedcat/movement/walkbot.xml"/>
+        <Include path="nullifiedcat/movement/followbot.xml"/>
+    </TabContainer>
+</Tab>

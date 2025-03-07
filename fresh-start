@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Print colored text
+print_colored() {
+    local color=$1
+    local text=$2
+    case $color in
+        "green") echo -e "\033[32m${text}\033[0m" ;;
+        "blue") echo -e "\033[34m${text}\033[0m" ;;
+        "red") echo -e "\033[31m${text}\033[0m" ;;
+        *) echo "${text}" ;;
+    esac
+}
+
+# Function to run a script and check its result
+run_script() {
+    local script="$1"
+    local description="$2"
+    
+    if [ ! -f "$script" ]; then
+        print_colored "red" "Error: $script not found!"
+        exit 1
+    fi
+    
+    if [ ! -x "$script" ]; then
+        chmod +x "$script"
+    fi
+    
+    print_colored "blue" "Starting $description..."
+    ./"$script"
+    
+    if [ $? -ne 0 ]; then
+        print_colored "red" "Error: $description failed!"
+        exit 1
+    fi
+    
+    print_colored "green" "$description completed successfully!"
+    echo
+}
+
+# Main installation sequence
+print_colored "blue" "Starting fresh installation process..."
+echo
+
+# Run install-sound
+run_script "install-sound" "audio dependencies installation"
+
+# Run navmesh-install
+run_script "install-navmesh" "navmesh installation"
+
+# Run install-all
+run_script "install-all" "cathook installation"
+
+print_colored "green" "Fresh installation completed successfully!"
+print_colored "blue" "Remember to restart Steam to see the new TF2 x32 shortcut." 

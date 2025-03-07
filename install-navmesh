@@ -1,0 +1,144 @@
+#!/bin/bash
+
+# Function to detect the Linux distribution
+detect_distro() {
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        case "$ID" in
+            "garuda")
+                echo "arch"  # Garuda is Arch-based
+                ;;
+            "linuxmint"|"ubuntu")
+                echo "debian"  # Mint and Ubuntu are Debian-based
+                ;;
+            *)
+                echo "$ID"
+                ;;
+        esac
+    elif [ -f /etc/arch-release ]; then
+        echo "arch"
+    elif [ -f /etc/debian_version ]; then
+        echo "debian"
+    elif [ -f /etc/fedora-release ]; then
+        echo "fedora"
+    elif [ -f /etc/gentoo-release ]; then
+        echo "gentoo"
+    elif [ -f /etc/void-release ]; then
+        echo "void"
+    else
+        echo "unknown"
+    fi
+}
+
+# Function to install pv if missing
+ensure_pv_installed() {
+    if ! command -v pv >/dev/null 2>&1; then
+        print_colored "blue" "Installing pv package for progress bars..."
+        local distro=$(detect_distro)
+        case "$distro" in
+            "manjaro"|"arch")
+                sudo pacman -S --needed pv
+                ;;
+            "ubuntu"|"debian")
+                sudo apt-get update
+                sudo apt-get install -y pv
+                ;;
+            "fedora")
+                sudo dnf install -y pv
+                ;;
+            *)
+                print_colored "red" "Could not install pv. Progress bars will be disabled."
+                return 1
+                ;;
+        esac
+    fi
+    return 0
+}
+
+# Function to find TF2 installation directory
+find_tf2_dir() {
+    local default_paths=(
+        "$HOME/.steam/steam/steamapps/common/Team Fortress 2"
+        "$HOME/.local/share/Steam/steamapps/common/Team Fortress 2"
+        "$HOME/Steam/steamapps/common/Team Fortress 2"
+    )
+
+    for path in "${default_paths[@]}"; do
+        if [ -d "$path" ]; then
+            echo "$path"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+# Print colored text
+print_colored() {
+    local color=$1
+    local text=$2
+    case $color in
+        "green") echo -e "\033[32m${text}\033[0m" ;;
+        "blue") echo -e "\033[34m${text}\033[0m" ;;
+        "red") echo -e "\033[31m${text}\033[0m" ;;
+        *) echo "${text}" ;;
+    esac
+}
+
+# Main script
+# Try to install pv if missing
+ensure_pv_installed
+PV_AVAILABLE=$?
+
+print_colored "blue" "Downloading navmesh files..."
+temp_dir=$(mktemp -d)
+wget --progress=bar:force:noscroll https://cdn.cathook.org/goyslop/catbot-navmesh.zip -O "$temp_dir/catbot-navmesh.zip" 2>&1 | stdbuf -o0 tr '\r' '\n' | grep -o '[0-9]*%'
+
+if [ $? -ne 0 ]; then
+    print_colored "red" "Failed to download catbot-navmesh.zip"
+    rm -rf "$temp_dir"
+    exit 1
+fi
+
+# Find TF2 directory
+tf2_dir=$(find_tf2_dir)
+
+if [ -z "$tf2_dir" ]; then
+    echo "TF2 isn't installed, or couldn't find the installation directory."
+    echo "Please either install TF2 or manually specify the path."
+    echo "The path should look like: ~/.steam/steam/steamapps/common/Team Fortress 2/"
+    read -p "Enter TF2 path (or press Ctrl+C to cancel): " tf2_dir
+    
+    if [ ! -d "$tf2_dir" ]; then
+        print_colored "red" "Invalid directory!"
+        rm -rf "$temp_dir"
+        exit 1
+    fi
+fi
+
+# Check if tf directory exists
+tf_dir="$tf2_dir/tf/maps"
+if [ ! -d "$tf_dir" ]; then
+    print_colored "red" "Could not find tf directory in $tf2_dir"
+    rm -rf "$temp_dir"
+    exit 1
+fi
+
+print_colored "blue" "Found TF2 directory: $tf2_dir"
+print_colored "blue" "Extracting navmesh files to tf directory..."
+
+# Use pv if available, otherwise use regular unzip
+if [ $PV_AVAILABLE -eq 0 ] && command -v pv >/dev/null 2>&1; then
+    unzip -o "$temp_dir/catbot-navmesh.zip" -d "$tf_dir" | pv -l -s $(unzip -l "$temp_dir/catbot-navmesh.zip" | tail -n 1 | awk '{print $2}') > /dev/null
+else
+    unzip -o "$temp_dir/catbot-navmesh.zip" -d "$tf_dir"
+fi
+
+if [ $? -eq 0 ]; then
+    print_colored "green" "Navmesh files installed successfully!"
+else
+    print_colored "red" "Failed to extract navmesh files!"
+fi
+
+# Cleanup
+rm -rf "$temp_dir" 

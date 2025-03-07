@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tab name="Walkbot" padding="4 4 4 4">
+        <Box padding="12 6 6 6" width="content" height="content" name="Controls">
+            <List width="150">
+                <AutoVariable width="fill" target="walkbot.recording-key" label="Recording Key" tooltip="Key to hold while recording nodes"/>
+                <AutoVariable width="fill" target="walkbot.force-slot" label="Force Slot" min="0" max="9" tooltip="Force bot to use specific weapon slot"/>
+                <AutoVariable width="fill" target="walkbot.leave-if-empty" label="Leave if Empty" tooltip="Leave the game if no nodes are loaded"/>
+                <AutoVariable width="fill" target="walkbot.free-move" label="Free Movement" tooltip="Allow manual movement override"/>
+                <CatCommand width="fill" name="Record" command="wb_record" tooltip="Start recording mode"/>
+                <CatCommand width="fill" name="Edit" command="wb_edit" tooltip="Start edit mode"/>
+                <CatCommand width="fill" name="Replay" command="wb_replay" tooltip="Start replay mode"/>
+                <CatCommand width="fill" name="Stop" command="wb_exit" tooltip="Stop walkbot"/>
+                <CatCommand width="fill" name="Clear Path" command="wb_clear" tooltip="Delete all recorded nodes"/>
+            </List>
+        </Box>
+        <Box padding="12 6 6 6" width="content" height="content" name="Node Settings" x="170">
+            <List width="150">
+                <AutoVariable width="fill" target="walkbot.edit.node-spawn-distance" label="Node Spawn Distance" min="1" max="200" tooltip="Distance between automatically created nodes"/>
+                <AutoVariable width="fill" target="walkbot.node-max-distance" label="Max Distance" min="1" max="200" tooltip="Maximum distance before finding a new node"/>
+                <AutoVariable width="fill" target="walkbot.node-reach-distance" label="Reach Distance" min="1" max="100" tooltip="Distance required to reach a node"/>
+            </List>
+        </Box>
+        <Box padding="12 6 6 6" width="content" height="content" name="Visualization" x="340">
+            <List width="150">
+                <AutoVariable width="fill" target="walkbot.draw.info" label="Draw Info" tooltip="Show walkbot status information"/>
+                <AutoVariable width="fill" target="walkbot.draw.path" label="Draw Path" tooltip="Show path between nodes"/>
+                <AutoVariable width="fill" target="walkbot.draw.nodes" label="Draw Nodes" tooltip="Show node positions"/>
+                <AutoVariable width="fill" target="walkbot.draw.indices" label="Draw Indices" tooltip="Show node connection flags"/>
+                <AutoVariable width="fill" target="walkbot.draw.connection-flags" label="Draw Flags" tooltip="Show node connection flags"/>
+            </List>
+        </Box>
+</Tab> 

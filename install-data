@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+[[ ! -z "$SUDO_USER" ]] && user=$SUDO_USER || user=$LOGNAME
+
+DATA_PATH=${1:-/opt/cathook/data}
+
+# Ensure proper permissions before proceeding
+if [ -d "$DATA_PATH" ]; then
+    echo "Setting permissions for existing cathook data directory at $DATA_PATH"
+    sudo chown -R $user:$user "$DATA_PATH"
+    sudo chmod -R 755 "$DATA_PATH"
+else
+    echo "Creating cathook data directory at $DATA_PATH"
+    sudo mkdir -p "$DATA_PATH"
+    sudo chown -R $user:$user "$DATA_PATH"
+    sudo chmod -R 755 "$DATA_PATH"
+fi
+
+echo "Installing cathook data to $DATA_PATH"
+sudo rsync -avh "data/" "$DATA_PATH"
+sudo rsync -avh --ignore-existing "config_data/" "$DATA_PATH"
+sudo chown -R $user:$user "$DATA_PATH"
+sudo chmod -R 755 "$DATA_PATH"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tab name="General" padding="4 4 4 4">
+    <Box name="General" width="content" height="content" padding="12 6 6 6">
+        <List width="150">
+            <AutoVariable width="fill" target="bunnyhop.enable" label="Enable bunny hop"/>
+            <AutoVariable width="fill" target="bunnyhop.chance" label="Bhop chance" tooltip="% chance of a successful bunnyhop."/>
+            <LabeledObject width="fill" label="Auto strafe">
+                <Select target="misc.autostrafe">
+                    <Option name="Off" value="0"/>
+                    <Option name="Regular" value="1"/>
+                    <Option name="Multidir" value="2"/>
+                </Select>
+            </LabeledObject>
+        </List>
+    </Box>
+    <Box name="Anti-backstab" width="content" height="content" padding="12 6 6 6" x="170">
+        <List width="180">
+            <AutoVariable width="fill" target="antibackstab.enable" label="Enable anti-backstab"/>
+            <AutoVariable width="fill" target="antibackstab.angle" label="Detection angle"/>
+            <AutoVariable width="fill" target="antibackstab.distance" label="Detection distance"/>
+            <AutoVariable width="fill" target="antibackstab.silent" label="Silent"/>
+            <AutoVariable width="fill" target="antibackstab.nope" label="Nope!" tooltip="Have your character say 'no'."/>
+        </List>
+    </Box>
+    <Box name="Misc" width="content" height="content" padding="12 6 6 6" x="370">
+        <List width="150">
+            <AutoVariable width="fill" target="misc.no-push" label="Nopush"/>
+            <AutoVariable width="fill" target="misc.roll-speedhack" label="Moonwalk" tooltip="Increase crouched movement speed."/>
+            <AutoVariable width="fill" target="misc.roll-speedhack.forward" label="Moonwalk forwards"/>
+        </List>
+    </Box>
+</Tab> 

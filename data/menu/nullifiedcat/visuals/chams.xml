@@ -1,0 +1,111 @@
+<Tab name="Chams">
+    <TabContainer width="fill" height="fill">
+        <Tab name="Players" padding="4 4 4 4">
+            <Box padding="12 6 6 6" width="content" height="content" name="General">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.enable" label="Enable Chams"/>
+                    <AutoVariable width="fill" target="chams.legit" label="Legit" tooltip="Don't show chams through walls"/>
+                    <AutoVariable width="fill" target="chams.show.players" label="Show Players"/>
+                    <AutoVariable width="fill" target="chams.show.teammates" label="Show Teammates"/>
+                    <AutoVariable width="fill" target="chams.self" label="Show Local Player"/>
+                    <AutoVariable width="fill" target="chams.player.alpha" label="Player Alpha"/>
+                </List>
+            </Box>
+            <Box padding="12 6 6 6" width="content" height="content" name="Colors" y="150">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.player.enemy.visible" label="Enemy Visible"/>
+                    <AutoVariable width="fill" target="chams.player.enemy.occluded" label="Enemy Through Walls"/>
+                    <AutoVariable width="fill" target="chams.player.team.visible" label="Team Visible"/>
+                    <AutoVariable width="fill" target="chams.player.team.occluded" label="Team Through Walls"/>
+                </List>
+            </Box>
+        </Tab>
+        <Tab name="Buildings" padding="4 4 4 4">
+            <Box padding="12 6 6 6" width="content" height="content" name="General">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.show.buildings" label="Show Buildings"/>
+                    <AutoVariable width="fill" target="chams.building.enemy" label="Show Enemy Buildings"/>
+                    <AutoVariable width="fill" target="chams.building.team" label="Show Team Buildings"/>
+                    <AutoVariable width="fill" target="chams.building.alpha" label="Building Alpha"/>
+                </List>
+            </Box>
+            <Box padding="12 6 6 6" width="content" height="content" name="Colors" y="120">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.building.enemy.visible" label="Enemy Visible"/>
+                    <AutoVariable width="fill" target="chams.building.enemy.occluded" label="Enemy Through Walls"/>
+                    <AutoVariable width="fill" target="chams.building.team.visible" label="Team Visible"/>
+                    <AutoVariable width="fill" target="chams.building.team.occluded" label="Team Through Walls"/>
+                </List>
+            </Box>
+        </Tab>
+        <Tab name="Projectiles" padding="4 4 4 4">
+            <Box padding="12 6 6 6" width="content" height="content" name="General">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.show.projectiles" label="Show Projectiles"/>
+                    <AutoVariable width="fill" target="chams.projectile.enemy" label="Show Enemy Projectiles"/>
+                    <AutoVariable width="fill" target="chams.projectile.team" label="Show Team Projectiles"/>
+                </List>
+            </Box>
+            <Box padding="12 6 6 6" width="content" height="content" name="Colors" y="100">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.projectile.enemy.visible" label="Enemy Visible"/>
+                    <AutoVariable width="fill" target="chams.projectile.enemy.occluded" label="Enemy Through Walls"/>
+                    <AutoVariable width="fill" target="chams.projectile.team.visible" label="Team Visible"/>
+                    <AutoVariable width="fill" target="chams.projectile.team.occluded" label="Team Through Walls"/>
+                </List>
+            </Box>
+        </Tab>
+        <Tab name="Materials" padding="4 4 4 4">
+            <Box padding="12 6 6 6" width="content" height="content" name="Settings">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.type" label="Chams Type" tooltip="0 = Normal, 1 = Flat, 2 = Shaded, 3 = Glossy, 4 = Glow, 5 = Wireframe"/>
+                    <AutoVariable width="fill" target="chams.phong" label="Enable Phong"/>
+                    <AutoVariable width="fill" target="chams.phongboost" label="Phong Boost"/>
+                    <AutoVariable width="fill" target="chams.envmaptint" label="Envmap Tint"/>
+                    <AutoVariable width="fill" target="chams.rimlight" label="Rimlight"/>
+                </List>
+            </Box>
+        </Tab>
+        <Tab name="Viewmodel" padding="4 4 4 4">
+            <Box padding="12 6 6 6" width="content" height="content" name="Hands">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.viewmodel.hands" label="Enable Hand Chams"/>
+                    <AutoVariable width="fill" target="chams.viewmodel.hands.color" label="Hand Color"/>
+                    <AutoVariable width="fill" target="remove.arms" label="Remove Arms"/>
+                </List>
+            </Box>
+            <Box padding="12 6 6 6" width="content" height="content" name="Weapon" y="100">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.viewmodel.weapon" label="Enable Weapon Chams"/>
+                    <AutoVariable width="fill" target="chams.viewmodel.weapon.color" label="Weapon Color"/>
+                    <AutoVariable width="fill" target="chams.weapons.original" label="Show Original Weapon"/>
+                </List>
+            </Box>
+        </Tab>
+        <Tab name="Other" padding="4 4 4 4">
+            <Box padding="12 6 6 6" width="content" height="content" name="World">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.world.objective" label="Show Objectives"/>
+                    <AutoVariable width="fill" target="chams.world.npcs" label="Show NPCs"/>
+                    <AutoVariable width="fill" target="chams.world.pickups" label="Show Pickups"/>
+                    <AutoVariable width="fill" target="chams.world.powerups" label="Show Powerups"/>
+                    <AutoVariable width="fill" target="chams.world.halloween" label="Show Halloween Items"/>
+                    <AutoVariable width="fill" target="chams.world.bombs" label="Show Bombs"/>
+                </List>
+            </Box>
+            <Box padding="12 6 6 6" width="content" height="content" name="Backtrack" y="180">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.backtrack.enabled" label="Enable Backtrack Chams"/>
+                    <AutoVariable width="fill" target="chams.backtrack.draw" label="Draw Mode" tooltip="0 = Last, 1 = Last+First, 2 = All"/>
+                    <AutoVariable width="fill" target="chams.backtrack.color" label="Backtrack Color"/>
+                </List>
+            </Box>
+            <Box padding="12 6 6 6" width="content" height="content" name="Fake Angle" y="280">
+                <List width="200">
+                    <AutoVariable width="fill" target="chams.fakeangle.enabled" label="Enable Fake Angle Chams"/>
+                    <AutoVariable width="fill" target="chams.fakeangle.color" label="Fake Angle Color"/>
+                </List>
+            </Box>
+        </Tab>
+    </TabContainer>
+</Tab>

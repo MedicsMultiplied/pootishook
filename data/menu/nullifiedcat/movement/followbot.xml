@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tab name="FollowBot" padding="4 4 4 4">
+    <Box name="FollowBot" width="content" height="content" padding="12 6 6 6">
+        <List width="180">
+            <AutoVariable width="fill" target="follow-bot.enable" label="Enable FollowBot" tooltip="Automatically follow other players"/>
+            <AutoVariable width="fill" target="follow-bot.lookatpath" label="Make FollowBot Look at the path" tooltip="Looks at path when it starts following people"/>
+            <AutoVariable width="fill" target="follow-bot.roaming" label="Roaming" tooltip="Look for someone to follow when there is not active target."/>
+            <AutoVariable width="fill" target="follow-bot.change-roaming-target" label="Change when possible" tooltip="Allows more changing of follow targets"/>
+            <AutoVariable width="fill" target="follow-bot.jump-if-stuck" label="Jump if stuck"/>
+            <AutoVariable width="fill" target="follow-bot.taunt-sync" label="Synced taunts" tooltip="Taunt when follow target taunts."/>
+            <AutoVariable width="fill" target="follow-bot.max-range" label="Activation Range" tooltip="Max distance to follow a target"/>
+            <AutoVariable width="fill" target="follow-bot.distance" label="Follow distance" tooltip="Distance to follow target"/>
+            <AutoVariable width="fill" target="follow-bot.ipc-distance" label="IRC additive distance"/>
+            <AutoVariable width="fill" target="follow-bot.mimic-slot" label="Mimic slot" tooltip="Mimic target's weapon slot."/>
+            <AutoVariable width="fill" target="follow-bot.mimic-crouch" label="Mimic crouch"/>
+            <AutoVariable width="fill" target="follow-bot.always-medigun" label="Always Medigun" tooltip="Always have the medigun out. Overrides mimic slot."/>
+            <AutoVariable width="fill" target="follow-bot.switch-afk" label="AFK switch"/>
+            <AutoVariable width="fill" target="follow-bot.afk-time" label="AFK limit" tooltip="Time a target must be AFK for to switch from them."/>
+            <AutoVariable width="fill" target="follow-bot.corners" label="Corner activate"/>
+            <AutoVariable width="fill" target="follow-bot.steamid" label="SteamID to follow" tooltip="Steamid of player to follow. Highest priority."/>
+            <AutoVariable width="fill" target="follow-bot.prioritize-leader" label="Prioritize the party leader" Tooltip="Second highest priority."/>
+            <AutoVariable width="fill" target="follow-bot.prioritize-friends" label="Prioritize friends" tooltip="Third highest priority."/>
+            <AutoVariable width="fill" target="follow-bot.draw-crumbs" label="Draw crumbs" tooltip="Draw follow path"/>
+        </List>
+    </Box>
+</Tab> 

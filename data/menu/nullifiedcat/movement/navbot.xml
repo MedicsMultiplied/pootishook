@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tab name="NavBot" padding="4 4 4 4">
+    <Box name="NavBot" width="content" height="content" padding="12 6 6 6">
+        <List width="150">
+            <AutoVariable width="fill" target="nav.enabled" label="Enable pathing"/>
+            <AutoVariable width="fill" target="nav.draw" label="Draw path"/>
+            <AutoVariable width="fill" target="nav.look-at-path" label="Look at path"/>
+            <AutoVariable width="fill" target="nav.fviewangles" label="F**k viewangles." tooltip="When it is time to look at the path, random viewangles are used. LOOK AT PATH CANNOT WORK WITH THIS, PERIOD."/>
+            <AutoVariable width="fill" target="nav.lapsmoothness" label="Look at path smoothness" tooltip="Sets the smoothness of look at path."/>
+            <AutoVariable width="fill" target="nav.vischeck-runtime.enabled" label="Runtime vischeck" tooltip="Check visibility while pathing"/>
+            <AutoVariable width="fill" target="nav.vischeck-runtime.delay" label="Vischeck delay" tooltip="Delay between visibility checks in milliseconds"/>
+            <AutoVariable width="fill" target="navbot.enabled" label="Enable NavBot"/>
+            <AutoVariable width="fill" target="navbot.capture-objectives" label="Capture objectives" tooltip="Automatically capture objectives (CTF, CP, and PL only)."/>
+            <AutoVariable width="fill" target="navbot.defend-while-roaming" label="Defend while roaming" tooltip="Try to defend objectives while roaming around (RECOMMENDED)"/>
+            <AutoVariable width="fill" target="navbot.search-health" label="Search health"/>
+            <AutoVariable width="fill" target="navbot.search-ammo" label="Search ammo"/>
+            <AutoVariable width="fill" target="navbot.escape-danger" label="Escape danger"/>
+            <AutoVariable width="fill" target="navbot.escape-danger.slight-danger.capping" label="Safe capping" tooltip="Make bots run pre-emptively from capture points in case of danger."/>
+            <AutoVariable width="fill" target="navbot.escape-danger.ctf-cap" label="Escape danger w. intel" tooltip="Also try to escape from danger when carrying intel."/>
+            <AutoVariable width="fill" target="navbot.primary-only" label="Auto best weapon"/>
+            <AutoVariable width="fill" target="navbot.melee-mode" label="Melee only"/>
+            <LabeledObject width="fill" label="Force slot">
+                <Select target="navbot.force-slot">
+                    <Option name="Don't force" value="0"/>
+                    <Option name="Primary" value="1"/>
+                    <Option name="Secondary" value="2"/>
+                    <Option name="Melee" value="3"/>
+                    <Option name="PDA" value="4"/>
+                    <Option name="PDA2" value="5"/>
+                </Select>
+            </LabeledObject>
+        </List>
+    </Box>
+    <Box name="NavBot 2" width="content" height="content" padding="12 6 6 6" x="170">
+        <List width="180">
+            <AutoVariable width="fill" target="navbot.autojump.enabled" label="Enable autojump"/>
+            <AutoVariable width="fill" target="navbot.autojump.trigger-distance" label="Jump distance"/>
+            <AutoVariable width="fill" target="navbot.snipe-sentries" label="Try to target sentries"/>
+            <AutoVariable width="fill" target="navbot.snipe-sentries.shortrange" label="Scout/Pyro sentry mode" tooltip="Try to target sentries as scout/pyro aswell. Usually not recommended."/>
+            <AutoVariable width="fill" target="nav.nojumppaths" label="Prefer no-jump paths" tooltip="Try to find paths that don't require jumping when possible"/>
+            <AutoVariable width="fill" target="nav.safepathing" label="Safe pathing" tooltip="Try to path through safer areas away from edges"/>
+            <AutoVariable width="fill" target="navbot.stay-near" label="Stalk enemies" tooltip="Try to outrange as sniper and close distance as scout/heavy"/>
+            <AutoVariable width="fill" target="navbot.yolo-mode" label="YOLO mode" tooltip="Don't escape from danger at all"/>
+            <AutoVariable width="fill" target="navbot.yolo-mode-rage" label="YOLO mode for RAGE" tooltip="Don't escape from danger until RAGE player is dead"/>
+            <AutoVariable width="fill" target="navbot.search-spells" label="Search spells" tooltip="Became a witch! and automatically collect Halloween spells when you don't have one"/>
+            <AutoVariable width="fill" target="navbot.search-powerups" label="Search powerups" tooltip="Automatically collect Mannpower powerups when you don't have one"/>
+            <AutoVariable width="fill" target="navbot.search-gargoyles" label="Search gargoyles" tooltip="Automatically collect GARGOYLE during Halloween"/>
+            <AutoVariable width="fill" target="navbot.avoid-stickies" label="Avoid stickies" tooltip="Try to run away from sticky bombs"/>
+            <AutoVariable width="fill" target="navbot.avoid-projectiles" label="Avoid projectiles" tooltip="Try to run away from rockets and pipes"/>
+            <AutoVariable width="fill" target="navbot.sticky-danger-range" label="Sticky danger range" tooltip="Distance to run from sticky bombs" min="100" max="1200"/>
+            <AutoVariable width="fill" target="navbot.projectile-danger-range" label="Projectile danger range" tooltip="Distance to run from rockets and pipes" min="100" max="1200"/>
+        </List>
+    </Box>
+    <Box name="Shield aimbot" width="content" height="content" padding="12 6 6 6" x="170" y="262">
+        <List width="180">
+            <AutoVariable width="fill" target="chargeaim.enable" label="Enabled" tooltip="Makes your demoman charge automatically go towards the enemy. Only active when key is held, and does not trigger the charge itself."/>
+            <AutoVariable width="fill" target="chargeaim.key" label="Key to hold"/>
+        </List>
+    </Box>
+    <Box name="Engineer Bot" width="content" height="content" padding="12 6 6 6" x="370">
+        <List width="200">
+            <AutoVariable width="fill" target="autorepair.enabled" label="Enable auto repair"/> 
+            <AutoVariable width="fill" target="autorepair.silent" label="Silent"/> 
+            <AutoVariable width="fill" target="autorepair.sentry" label="Repair sentry"/> 
+            <AutoVariable width="fill" target="autorepair.dispenser" label="Repair dispenser"/> 
+            <AutoVariable width="fill" target="autorepair.teleport" label="Repair teleporter"/> 
+            <LabeledObject width="fill" label="Priority"> 
+                <Select target="autorepair.priority"> 
+                    <Option name="None" value="0"/> 
+                    <Option name="Sentry" value="1"/> 
+                    <Option name="Dispenser" value="2"/> 
+                    <Option name="Teleport" value="3"/> 
+                </Select> 
+            </LabeledObject> 
+            <AutoVariable width="fill" target="autoupgrade.enabled" label="Enable auto upgrade"/> 
+            <AutoVariable width="fill" target="autoupgrade.sentry" label="Upgrade sentry"/> 
+            <AutoVariable width="fill" target="autoupgrade.sentry.level" label="Upgrade sentry level" min="1" max="3"/> 
+            <AutoVariable width="fill" target="autoupgrade.dispenser" label="Upgrade dispenser"/> 
+            <AutoVariable width="fill" target="autoupgrade.dispenser.level" label="Upgrade dispenser level" min="1" max="3"/> 
+            <AutoVariable width="fill" target="autoupgrade.teleport" label="Upgrade teleporter"/> 
+            <AutoVariable width="fill" target="autoupgrade.teleport.level" label="Upgrade teleporter level" min="1" max="3"/> 
+        </List>
+    </Box>
+
+    <!-- TODO -->
+    <!-- <Box name="MvM Bot" width="content" height="content" padding="12 6 6 6" x="370" y="250">
+        <List width="200">
+            <AutoVariable width="fill" target="navbot.mvm.enabled" label="Enable MvM mode"/>
+            <AutoVariable width="fill" target="navbot.mvm.autoupgrade" label="Auto upgrade"/>
+            <AutoVariable width="fill" target="navbot.mvm.force-upgrade" label="Force upgrade"/>
+            <AutoVariable width="fill" target="navbot.mvm.min-credits" label="Min credits for upgrade"/>
+            <AutoVariable width="fill" target="navbot.mvm.min-upgrade-credits" label="Min credits to start"/>
+            <AutoVariable width="fill" target="navbot.mvm.upgrade-range" label="Upgrade station range"/>
+            <AutoVariable width="fill" target="navbot.mvm.debug" label="Debug mode"/>
+        </List>
+    </Box> -->
+</Tab> 

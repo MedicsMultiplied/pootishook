@@ -1,0 +1,15 @@
+#!/bin/bash
+
+[[ ! -z "$SUDO_USER" ]] && user=$SUDO_USER || user=$LOGNAME
+
+# Ensure target directories have proper permissions
+sudo chown -R $user:$user ../data 2>/dev/null || true
+sudo chmod -R 755 ../data 2>/dev/null || true
+
+# Copy files with sudo
+sudo \cp -rf ./data/ ../
+sudo \cp -nr ./config_data/* ../data
+
+# Set final permissions
+sudo chown -R $user:$user ../data
+sudo chmod -R 755 ../data
